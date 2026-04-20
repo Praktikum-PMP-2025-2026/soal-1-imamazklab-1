@@ -12,10 +12,20 @@ void calc(int *input, int N) {
     for (int i = N - 1; i >=0 ; i--) {
         if (input[i] == IDX_UNDEF) {
             if (i == N - 1) {
-                input[i] = input[i - 1];
+                if(input[i - 1] != IDX_UNDEF) {
+                    input[i] = input[i - 1];
+                }
+                else {
+                    input[i] = 0;
+                }
             }
             else if (i == 0) {
-                input[i] = input[1];
+                if(input[i + 1] != IDX_UNDEF) {
+                    input[i] = input[i + 1];
+                }
+                else {
+                    input[i] = 0;
+                }
             }
 
             else {
