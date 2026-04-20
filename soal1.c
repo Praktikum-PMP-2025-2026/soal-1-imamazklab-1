@@ -9,35 +9,50 @@ void getInput(int *input, int N) {
     }
 }
 
+int idxCheckRight(int *input, int start, int N) {
+    for (int i = start; i < N; i++) {
+        if (input[i] != IDX_UNDEF) {
+            return i;
+        }
+    }
+    return IDX_UNDEF;
+}
+
+int idxCheckLeft(int *input, int start, int N) {
+    for (int i = start; i >= 0; i--) {
+        if (input[i] != IDX_UNDEF) {
+            return i;
+        }
+    }
+    return IDX_UNDEF;
+}
+
 void calc(int *input, int N) {
-    for (int i = N - 1; i >=0 ; i--) {
+    for (int i = 0; i < N ; i++) {
+        int idxRight = 0;
+        int idxLeft = 0;
         if (input[i] == IDX_UNDEF) {
             if (i == N - 1) {
-                if(input[i - 1] != IDX_UNDEF) {
-                    input[i] = input[i - 1];
-                }
-                else {
-                    input[i] = 0;
-                }
+                idxRight = idxCheckRight(input, i - 1, N);
+                if (idxRight != IDX_UNDEF) input[i] = input[idxRight];
+                else input[i] = 0;
             }
             else if (i == 0) {
-                if(input[i + 1] != IDX_UNDEF) {
-                    input[i] = input[i + 1];
-                }
-                else {
-                    input[i] = 0;
-                }
+                idxLeft = idxCheckLeft(input, i + 1, N);
+                if (idxLeft != IDX_UNDEF) input[i] = input[idxLeft];
+                else input[i] = 0;
             }
-
             else {
-                if (input[i + 1] != IDX_UNDEF && input[i - 1] != IDX_UNDEF) {
-                    input[i] = floor((double)((input[i + 1] + input[i - 1])) / 2);
+                idxRight = idxCheckRight(input, i + 1, N);
+                idxLeft = idxCheckLeft(input, i - 1, N);
+                if (idxRight != IDX_UNDEF && idxLeft != IDX_UNDEF) {
+                    input[i] = floor((double)((input[idxRight] + input[idxLeft])) / 2);
                 }
-                else if (input[i + 1] != IDX_UNDEF) {
-                    input[i] = input[i + 1];
+                else if (idxLeft != IDX_UNDEF) {
+                    input[i] = input[idxLeft];
                 }
-                else if(input[i - 1] != IDX_UNDEF) {
-                    input[i] = input[i + 1];
+                else if(idxRight != IDX_UNDEF) {
+                    input[i] = input[idxRight];
                 }
                 else {
                     input[i] = 0;
