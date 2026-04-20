@@ -77,7 +77,7 @@ int main() {
         printf("%d", a[i]);
         if (i != N - 1) printf(" ");
         sum += a[i];
-        if (a[i]< 0 && sum > a[i]) {
+        if (a[i] < 0 && sum < a[i]) {
             sum = a[i];
         }
     }
