@@ -66,9 +66,6 @@ int main() {
         if (sumprev > sum) {
             sum = sumprev;
         }
-        if (a[i] > sumprev) {
-            sum = a[i];
-        }
         sumprev = sum;
     }
     printf("\nMAX_SUM %d", sum);
