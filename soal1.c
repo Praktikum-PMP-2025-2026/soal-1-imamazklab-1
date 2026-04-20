@@ -71,14 +71,14 @@ int main() {
 
     calc(a, N);
 
-    int sum = a[0];
+    int sum = 0;
     printf("RECOVERED ");
-    for (int i = 1; i < N; i++) {
+    for (int i = 0; i < N; i++) {
         printf("%d", a[i]);
         if (i != N - 1) printf(" ");
         sum += a[i];
     }
-    
+
     printf("\nMAX_SUM %d", sum);
 
     return 0;
