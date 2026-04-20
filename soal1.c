@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 #define IDX_UNDEF -1
 
@@ -30,7 +31,7 @@ void calc(int *input, int N) {
 
             else {
                 if (input[i + 1] != IDX_UNDEF && input[i - 1] != IDX_UNDEF) {
-                    input[i] = (int)(input[i + 1] + input[i - 1]) / 2;
+                    input[i] = floor((double)((input[i + 1] + input[i - 1])) / 2);
                 }
                 else if (input[i + 1] != IDX_UNDEF) {
                     input[i] = input[i + 1];
