@@ -33,13 +33,13 @@ void calc(int *input, int N) {
         int idxLeft = 0;
         if (input[i] == IDX_UNDEF) {
             if (i == N - 1) {
-                idxRight = idxCheckRight(input, i - 1, N);
-                if (idxRight != IDX_UNDEF) input[i] = input[idxRight];
+                idxLeft = idxCheckLeft(input, i + 1, N);
+                if (idxLeft != IDX_UNDEF) input[i] = input[idxLeft];
                 else input[i] = 0;
             }
             else if (i == 0) {
-                idxLeft = idxCheckLeft(input, i + 1, N);
-                if (idxLeft != IDX_UNDEF) input[i] = input[idxLeft];
+                idxRight = idxCheckRight(input, i - 1, N);
+                if (idxRight != IDX_UNDEF) input[i] = input[idxRight];
                 else input[i] = 0;
             }
             else {
