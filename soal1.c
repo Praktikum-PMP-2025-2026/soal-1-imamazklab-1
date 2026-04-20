@@ -76,7 +76,14 @@ int main() {
     for (int i = 0; i < N; i++) {
         printf("%d", a[i]);
         if (i != N - 1) printf(" ");
-        sum += a[i];
+        if (a[i] > 0) sum += a[i];
+    }
+
+    if (sum == 0) {
+        sum = a[0];
+        for (int i = 1; i < N; i++) {
+            if (a[i] > sum) sum = a[i];
+        }
     }
 
     printf("\nMAX_SUM %d", sum);
