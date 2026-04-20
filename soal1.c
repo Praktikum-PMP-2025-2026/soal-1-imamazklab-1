@@ -57,11 +57,19 @@ int main() {
     calc(a, N);
 
     int sum = 0;
+    int sumprev = 0;
     printf("RECOVERED ");
     for (int i = 0; i < N; i++) {
         printf("%d", a[i]);
         if (i != N - 1) printf(" ");
         sum += a[i];
+        if (sumprev > sum) {
+            sum = sumprev;
+        }
+        if (a[i] > sumprev) {
+            sum = a[i];
+        }
+        sumprev = sum;
     }
     printf("\nMAX_SUM %d", sum);
 
